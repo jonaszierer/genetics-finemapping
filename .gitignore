@@ -9,3 +9,4 @@ docs/
 cromwell-*/
 docker-*/
 spark-*/
+__pycache__
