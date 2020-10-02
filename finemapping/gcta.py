@@ -185,7 +185,7 @@ def write_cond_list(cond_list, outf):
     '''
     with open(outf, 'w') as out_h:
         for var in cond_list:
-            out_h.write(var.replace('_', ':') + '\n')
+            out_h.write(var + '\n')
     return outf
 
 def sumstat_to_gcta(sumstats, outf, snplist, p_threshold=None):

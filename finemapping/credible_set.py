@@ -114,7 +114,7 @@ def run_credible_set_for_locus(
             # Add index variant columns
             cred_sets.loc[:, 'lead_variant_id'] = index_info['variant_id']
             cred_sets[['lead_chrom', 'lead_pos', 'lead_ref', 'lead_alt']] = \
-                cred_sets.lead_variant_id.str.split(':', expand=True)
+                cred_sets.lead_variant_id.str.split('_', expand=True)
 
             # Add column specifying method used
             cred_sets.loc[:, 'multisignal_method'] = method
