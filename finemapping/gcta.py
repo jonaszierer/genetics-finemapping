@@ -42,7 +42,8 @@ def get_conditional_top_loci(sumstats, in_plink, temp_dir,
            '--cojo-slct',
            '--out {0}'.format(gcta_out)
            ]
-
+    logger.debug(" ".join(cmd))
+    
     # Run command
     fnull = open(os.devnull, 'w')
     cp = sp.run(' '.join(cmd), shell=True, stdout=fnull, stderr=sp.STDOUT)
