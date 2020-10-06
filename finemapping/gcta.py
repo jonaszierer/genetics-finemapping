@@ -33,7 +33,6 @@ def get_conditional_top_loci(sumstats, in_plink, temp_dir,
     # Construct command
     cmd = [
            'gcta64 --bfile {0}'.format(in_plink.format(chrom=chrom)),
-           '--chr {0}'.format(chrom),
            '--extract {0}'.format(gcta_snplist),
            '--maf {0}'.format(maf),
            '--cojo-p {0}'.format(cojo_p),
