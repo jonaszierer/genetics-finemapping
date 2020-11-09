@@ -45,13 +45,16 @@ def get_conditional_top_loci(sumstats, in_plink, temp_dir,
     logger.debug(" ".join(cmd))
     
     # Run command
-    fnull = open(os.devnull, 'w')
-    cp = sp.run(' '.join(cmd), shell=True, stdout=fnull, stderr=sp.STDOUT)
-
+    cp = sp.run(' '.join(cmd), shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    
     # Log error if GCTA return code is not 0
     if cp.returncode != 0:
         gcta_log_file = '{0}.log'.format(gcta_out)
-        gcta_error = read_error_from_gcta_log(gcta_log_file)
+        if os.path.exists(gcta_log_file):
+            gcta_error = read_error_from_gcta_log(gcta_log_file)
+        else:
+            out = cp.stdout.decode("utf-8") 
+            gcta_error = out 
         logger.error('GCTA error:\n\n{0}\n'.format(gcta_error))
 
     # Read results (if they exist)
